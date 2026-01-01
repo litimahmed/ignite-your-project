@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { Rocket } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
 
@@ -11,13 +11,20 @@ export const VideoBanner = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative bg-dark overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=2000&q=80"
-          alt="Creative team brainstorming"
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2000&q=80"
+          alt="Development team working on innovative solutions"
           className="w-full h-full object-cover opacity-50 grayscale"
         />
         <div className="absolute inset-0 bg-dark/30" />
@@ -33,7 +40,10 @@ export const VideoBanner = () => {
       {/* CTA Button - Center */}
       <div ref={ref} className="relative z-10 flex items-center justify-center min-h-[500px]">
         <div className={`${isVisible ? "animate-fade-up" : "opacity-0"}`}>
-          <button className="group relative w-36 h-36">
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className="group relative w-36 h-36"
+          >
             {/* Rotating Text Circle */}
             <div className="absolute inset-0 animate-spin-slow">
               <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -53,7 +63,7 @@ export const VideoBanner = () => {
             {/* Center CTA Button */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent transition-all duration-300">
-                <ArrowRight className="w-6 h-6 text-accent group-hover:text-accent-foreground transition-colors" />
+                <Rocket className="w-6 h-6 text-accent group-hover:text-accent-foreground transition-colors" />
               </div>
             </div>
           </button>

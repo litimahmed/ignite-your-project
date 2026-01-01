@@ -6,6 +6,13 @@ export const About = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="about" className="py-16 md:py-28 bg-background">
       <div ref={ref} className="container-custom">
@@ -27,7 +34,10 @@ export const About = () => {
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6">
-              <button className="btn-primary uppercase">
+              <button 
+                className="btn-primary uppercase"
+                onClick={() => scrollToSection('services')}
+              >
                 {t("about.button")}
               </button>
               <div className="flex items-center gap-3">
@@ -39,12 +49,12 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Right Content - Image without video overlay */}
+          {/* Right Content - Image */}
           <div className={`relative ${isVisible ? "animate-slide-left" : "opacity-0"}`}>
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-                alt="Creative team collaboration"
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80"
+                alt="Professional software development team working together"
                 className="w-full h-[300px] md:h-[450px] object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
               {/* Decorative accent corner */}
