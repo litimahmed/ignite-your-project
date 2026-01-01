@@ -2,16 +2,30 @@ import { Quote } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
 
+const testimonialData = [
+  {
+    name: "Sarah Mitchell",
+    role: "CEO & Founder",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    quoteKey: "quote1"
+  },
+  {
+    name: "David Chen",
+    role: "Marketing Director",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    quoteKey: "quote2"
+  },
+  {
+    name: "Emma Rodriguez",
+    role: "Tech Startup Founder",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
+    quoteKey: "quote3"
+  },
+];
+
 export const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
-
-  const testimonials = t("testimonials.items", { returnObjects: true }) as Array<{
-    quote: string;
-    name: string;
-    role: string;
-    image: string;
-  }>;
 
   return (
     <section id="testimonials" className="py-16 md:py-28 bg-background">
@@ -22,13 +36,13 @@ export const Testimonials = () => {
             ● {t("testimonials.subtitle")}
           </p>
           <h2 className="section-main-header text-[28px] md:text-[45px]">
-            {t("testimonials.titleStart")} <span className="text-accent">{t("testimonials.titleHighlight")}</span>
+            {t("testimonials.title")}
           </h2>
         </div>
 
         {/* Testimonials Grid */}
         <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 ${isVisible ? "animate-fade-up delay-200" : "opacity-0"}`}>
-          {testimonials.map((testimonial, index) => (
+          {testimonialData.map((testimonial, index) => (
             <div
               key={index}
               className="group relative bg-secondary rounded-2xl p-6 md:p-8 pb-24 hover:shadow-xl transition-all duration-300"
@@ -40,7 +54,7 @@ export const Testimonials = () => {
 
               {/* Quote Text */}
               <p className="text-foreground text-base md:text-lg leading-relaxed mb-6">
-                "{testimonial.quote}"
+                "{t(`testimonials.quotes.${testimonial.quoteKey}`)}"
               </p>
 
               {/* Client Info - Positioned at bottom */}
@@ -62,7 +76,7 @@ export const Testimonials = () => {
                 </div>
               </div>
               
-              {/* Bottom accent line - separate from client info */}
+              {/* Bottom accent line */}
               <div className="absolute bottom-0 left-6 right-6 md:left-8 md:right-8 h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
             </div>
           ))}

@@ -107,6 +107,52 @@ export const fr = {
       quote4: "Des résultats exceptionnels! Notre nouveau site web est non seulement magnifique mais performe aussi exceptionnellement. L'engagement utilisateur a triplé depuis la refonte.",
     },
   },
+  packages: {
+    subtitle: "TARIFS",
+    titleStart: "NOS",
+    titleHighlight: "FORFAITS",
+    description: "Choisissez le plan parfait pour vos besoins. Tous les forfaits incluent un support dédié et une assurance qualité.",
+    popular: "LE PLUS POPULAIRE",
+    cta: "COMMENCER",
+    items: {
+      starter: {
+        name: "DÉBUTANT",
+        price: "2 500€",
+        description: "Parfait pour les petites entreprises et startups souhaitant établir leur présence numérique.",
+        features: {
+          f1: "Site Web Responsive 5 Pages",
+          f2: "Configuration SEO de Base",
+          f3: "Intégration Formulaire Contact",
+          f4: "2 Tours de Révisions",
+        },
+      },
+      professional: {
+        name: "PROFESSIONNEL",
+        price: "7 500€",
+        description: "Idéal pour les entreprises en croissance nécessitant des fonctionnalités avancées.",
+        features: {
+          f1: "Application Web Sur Mesure",
+          f2: "SEO & Analytics Avancés",
+          f3: "Intégration E-commerce",
+          f4: "Implémentation CMS",
+          f5: "3 Mois de Support",
+        },
+      },
+      enterprise: {
+        name: "ENTREPRISE",
+        price: "SUR DEVIS",
+        description: "Solutions complètes pour les grandes organisations avec des besoins complexes.",
+        features: {
+          f1: "Développement Full-Stack",
+          f2: "Intégration API Personnalisée",
+          f3: "Optimisation des Performances",
+          f4: "Renforcement de la Sécurité",
+          f5: "Support Prioritaire 24/7",
+          f6: "Chef de Projet Dédié",
+        },
+      },
+    },
+  },
   partners: {
     keywords: ["STRATÉGIE", "DESIGN", "DÉVELOPPEMENT", "BRANDING", "MARKETING", "INNOVATION"],
   },

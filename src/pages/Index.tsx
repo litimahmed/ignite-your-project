@@ -7,6 +7,7 @@ import { FAQ } from "@/components/FAQ";
 import { VideoBanner } from "@/components/VideoBanner";
 import { Testimonials } from "@/components/Testimonials";
 import { Partners } from "@/components/Partners";
+import { Packages } from "@/components/Packages";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 
@@ -22,6 +23,7 @@ const Index = () => {
       <VideoBanner />
       <Testimonials />
       <Partners />
+      <Packages />
       <CTA />
       <Footer />
     </div>

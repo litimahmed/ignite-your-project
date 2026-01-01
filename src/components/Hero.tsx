@@ -1,17 +1,10 @@
-import { Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
 
 export const Hero = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section
@@ -41,25 +34,13 @@ export const Hero = () => {
               {t("hero.title1")}
               <br />
               <span className="text-accent">{t("hero.title2")}</span>
-              <br />
-              {t("hero.title3")}
             </h1>
           </div>
 
-          <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto lg:mx-0">
-            {t("hero.description")}
-          </p>
-
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button 
-              className="btn-primary uppercase"
-              onClick={() => scrollToSection('services')}
-            >
+            <button className="btn-primary uppercase">
               {t("hero.button")}
             </button>
-            <span className="text-muted-foreground text-sm">
-              {t("hero.or")} <span className="underline cursor-pointer hover:text-foreground transition-colors">{t("hero.viewWork")}</span>
-            </span>
           </div>
         </div>
 
@@ -81,12 +62,9 @@ export const Hero = () => {
               </div>
             </div>
 
-            {/* Scroll Indicator with Innovation Icon */}
+            {/* Scroll Indicator */}
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 lg:left-auto lg:right-8 lg:translate-x-0">
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="group relative w-24 h-24 md:w-28 md:h-28"
-              >
+              <button className="group relative w-24 h-24 md:w-28 md:h-28">
                 {/* Rotating Text Circle */}
                 <div className="absolute inset-0 animate-spin-slow">
                   <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -98,7 +76,7 @@ export const Hero = () => {
                     </defs>
                     <text className="text-[8px] fill-foreground uppercase tracking-[0.2em]">
                       <textPath href="#circlePath">
-                        {t("hero.scrollText")}
+                        {t("hero.circleText")}
                       </textPath>
                     </text>
                   </svg>
@@ -106,7 +84,7 @@ export const Hero = () => {
                 {/* Center Icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent transition-all duration-300">
-                    <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-accent group-hover:text-accent-foreground transition-colors" />
+                    <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-accent group-hover:text-accent-foreground transition-colors" />
                   </div>
                 </div>
               </button>
