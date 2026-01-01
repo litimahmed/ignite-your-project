@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useTranslation } from "react-i18next";
 
@@ -6,87 +6,111 @@ export const Hero = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { t } = useTranslation();
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center bg-dark overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=2000&q=80"
-          alt="Creative workspace with design materials"
-          className="w-full h-full object-cover opacity-40 grayscale"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark/80 via-dark/60 to-dark/40" />
+    <section
+      id="home"
+      className="min-h-screen bg-background relative overflow-hidden"
+    >
+      {/* Background Watermark */}
+      <div className="absolute top-20 left-0 pointer-events-none opacity-10">
+        <span className="text-[20vw] font-display text-foreground whitespace-nowrap tracking-wider">
+          CREATIVE
+        </span>
       </div>
 
-      {/* Content */}
-      <div ref={ref} className="relative z-10 container-custom py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left Content */}
-          <div className="pt-10 lg:pt-20 text-center lg:text-left">
-            <div className={`${isVisible ? "animate-fade-up" : "opacity-0"}`}>
-              <p className="text-accent text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase mb-6 md:mb-8">
-                ● {t("hero.subtitle")}
-              </p>
-            </div>
-            
-            <h1 
-              className={`text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-display text-light leading-[1.05] mb-8 md:mb-10 ${
-                isVisible ? "animate-fade-up delay-100" : "opacity-0"
-              }`}
-            >
-              {t("hero.title1")}<br />
-              {t("hero.title2")}
+      <div
+        ref={ref}
+        className="container-custom pt-32 pb-16 min-h-screen flex flex-col lg:flex-row items-center justify-between gap-8"
+      >
+        {/* Left Content */}
+        <div
+          className={`flex-1 space-y-6 md:space-y-8 text-center lg:text-left ${isVisible ? "animate-slide-right" : "opacity-0"}`}
+        >
+          <div className="space-y-4">
+            <p className="text-foreground text-sm md:text-base tracking-[0.2em] uppercase">
+              ● {t("hero.subtitle")}
+            </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-display uppercase leading-[0.95] tracking-tight">
+              {t("hero.title1")}
+              <br />
+              <span className="text-accent">{t("hero.title2")}</span>
+              <br />
+              {t("hero.title3")}
             </h1>
-            
-            <div className={`${isVisible ? "animate-fade-up delay-200" : "opacity-0"}`}>
-              <button 
-                className="border border-accent/50 text-light hover:bg-accent hover:text-accent-foreground hover:border-accent rounded-full px-8 md:px-10 py-3 md:py-4 text-[11px] md:text-xs tracking-[0.15em] uppercase transition-all duration-300 bg-transparent"
-              >
-                {t("hero.button")}
-              </button>
-            </div>
           </div>
 
-          {/* Right Content - Scroll Down Indicator */}
-          <div 
-            className={`flex justify-center lg:justify-end items-center min-h-[200px] md:min-h-[300px] ${
-              isVisible ? "animate-fade-up delay-300" : "opacity-0"
-            }`}
-          >
+          <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto lg:mx-0">
+            {t("hero.description")}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <button 
-              onClick={scrollToAbout}
-              className="group relative w-32 h-32 md:w-40 md:h-40"
+              className="btn-primary uppercase"
+              onClick={() => scrollToSection('services')}
             >
-              {/* Rotating Text Circle */}
-              <div className="absolute inset-0 animate-spin-slow">
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
-                    />
-                  </defs>
-                  <text className="text-[7px] fill-light/70 uppercase tracking-[0.25em]">
-                    <textPath href="#circlePath">
-                      {t("hero.circleText")}
-                    </textPath>
-                  </text>
-                </svg>
-              </div>
-              {/* Center Scroll Down Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent transition-all duration-300">
-                  <ChevronDown className="w-6 h-6 md:w-8 md:h-8 text-accent group-hover:text-accent-foreground transition-colors animate-bounce" />
-                </div>
-              </div>
+              {t("hero.button")}
             </button>
+            <span className="text-muted-foreground text-sm">
+              {t("hero.or")} <span className="underline cursor-pointer hover:text-foreground transition-colors">{t("hero.viewWork")}</span>
+            </span>
+          </div>
+        </div>
+
+        {/* Right Content - Image with decorative elements */}
+        <div
+          className={`flex-1 relative ${isVisible ? "animate-slide-left" : "opacity-0"}`}
+        >
+          <div className="relative">
+            {/* Main Image */}
+            <div className="relative overflow-hidden rounded-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                alt="Professional development team collaborating in modern office"
+                className="w-full h-[350px] md:h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+              {/* Decorative corner accent */}
+              <div className="absolute bottom-0 right-0 w-24 h-24 md:w-32 md:h-32">
+                <div className="absolute bottom-4 right-4 w-full h-full border-b-2 border-r-2 border-accent rounded-br-2xl" />
+              </div>
+            </div>
+
+            {/* Scroll Indicator with Innovation Icon */}
+            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 lg:left-auto lg:right-8 lg:translate-x-0">
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="group relative w-24 h-24 md:w-28 md:h-28"
+              >
+                {/* Rotating Text Circle */}
+                <div className="absolute inset-0 animate-spin-slow">
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <defs>
+                      <path
+                        id="circlePath"
+                        d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                      />
+                    </defs>
+                    <text className="text-[8px] fill-foreground uppercase tracking-[0.2em]">
+                      <textPath href="#circlePath">
+                        {t("hero.scrollText")}
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+                {/* Center Icon */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-accent flex items-center justify-center group-hover:bg-accent transition-all duration-300">
+                    <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-accent group-hover:text-accent-foreground transition-colors" />
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
