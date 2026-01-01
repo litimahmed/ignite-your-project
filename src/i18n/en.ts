@@ -107,6 +107,52 @@ export const en = {
       quote4: "Outstanding results! Our new website not only looks stunning but also performs exceptionally. The user engagement has tripled since the redesign.",
     },
   },
+  packages: {
+    subtitle: "PRICING",
+    titleStart: "OUR",
+    titleHighlight: "PACKAGES",
+    description: "Choose the perfect plan for your business needs. All packages include dedicated support and quality assurance.",
+    popular: "MOST POPULAR",
+    cta: "GET STARTED",
+    items: {
+      starter: {
+        name: "STARTER",
+        price: "$2,500",
+        description: "Perfect for small businesses and startups looking to establish their digital presence.",
+        features: {
+          f1: "5-Page Responsive Website",
+          f2: "Basic SEO Setup",
+          f3: "Contact Form Integration",
+          f4: "2 Rounds of Revisions",
+        },
+      },
+      professional: {
+        name: "PROFESSIONAL",
+        price: "$7,500",
+        description: "Ideal for growing businesses that need advanced features and custom solutions.",
+        features: {
+          f1: "Custom Web Application",
+          f2: "Advanced SEO & Analytics",
+          f3: "E-commerce Integration",
+          f4: "CMS Implementation",
+          f5: "3 Months Support",
+        },
+      },
+      enterprise: {
+        name: "ENTERPRISE",
+        price: "CUSTOM",
+        description: "Full-scale solutions for large organizations with complex requirements.",
+        features: {
+          f1: "Full-Stack Development",
+          f2: "Custom API Integration",
+          f3: "Performance Optimization",
+          f4: "Security Hardening",
+          f5: "24/7 Priority Support",
+          f6: "Dedicated Project Manager",
+        },
+      },
+    },
+  },
   partners: {
     keywords: ["STRATEGY", "DESIGN", "DEVELOPMENT", "BRANDING", "MARKETING", "INNOVATION"],
   },
